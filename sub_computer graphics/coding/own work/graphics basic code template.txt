@@ -1,0 +1,18 @@
+#include <iostream>
+#include<graphics.h>
+#include<stdio.h>
+
+using namespace std;
+
+int main()
+{
+    int gd = DETECT , gm;
+    initgraph(&gd,&gm,"");
+    
+    //Write down your code here
+
+    getch();
+
+    closegraph();
+    return 0;
+}
