@@ -1,24 +1,24 @@
-male(fojorali).
-male(siraj).
-male(kader).
-male(hasem).
-male(bacchu).
-male(monir).
-male(saiful).
-male(taiful).
-male(tufayel).
-male(foysal).
+male(mahmud).
+male(rahim).
+male(malek).
+male(tonoy).
+male(shakil).
+male(ovi).
 
-parents(fojorali,siraj).
-parents(siraj,kader).
-parents(siraj,hasem).
-parents(siraj,bacchu).
-parents(kader,monir).
-parents(kader,saiful).
-parents(hasem,taiful).
-parents(bacchu,tufayel).
-parents(bacchu,foysal).
+female(fatema).
+female(khaleda).
+female(tonima).
+female(trisha).
 
+parents(mahmud,rahim).
+parents(rahim,malek).
+parents(rahim,fatema).
+parents(rahim,khaleda).
+parents(malek,tonoy).
+parents(malek,shakil).
+parents(fatema,ovi).
+parents(khaleda,tonima).
+parents(khaleda,trisha).
 
 father(X,Y):- parents(X,Y),male(X).
 mother(X,Y):- parents(X,Y),female(X).
@@ -32,5 +32,3 @@ uncle(X,Z):-sibling(X,Y),parents(Y,Z),male(X).
 aunty(X,Z):-sibling(X,Y),parents(Y,Z),female(X).
 
 cousin(X,Z):-sibling(W,Y),parents(W,X),parents(Y,Z).
-
-
