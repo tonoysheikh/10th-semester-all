@@ -1,58 +1,63 @@
-#include<bits/stdc++.h>
-#include <graphics.h>
-#include <conio.h>
+#include <bits/stdc++.h>
+#include<graphics.h>
 
 using namespace std;
 
-void plotPoints(int a, int b, int x, int y) {
-    putpixel(a + x, b + y, YELLOW);
-    putpixel(a - x, b + y, YELLOW);
-    putpixel(a + x, b - y, YELLOW);
-    putpixel(a - x, b - y, YELLOW);
-    putpixel(a + y, b + x, YELLOW);
-    putpixel(a - y, b + x, YELLOW);
-    putpixel(a + y, b - x, YELLOW);
-    putpixel(a - y, b - x, YELLOW);
 
-    delay(100);
-}
+int main()
+{
 
-void drawCircle(int a, int b, int r) {
-    int x = 0, y = r;
-    int d = 1 - r;
+    int gd = DETECT , gm;
+    initgraph(&gd,&gm,"");
 
-    plotPoints(a, b, x, y);
+    int x , y , x1 , y1 , r;
+    cin >> x1 >> y1 >> r;
 
-    while (x < y) {
-        x++;
-        if (d < 0) {
-            d += 2 * x + 1;
-        } else {
+    x = 0;
+    y = r;
+
+    int p = 1 - r;
+
+    while(x < y)
+    {
+        if(p >= 0)
+        {
+            x++;
             y--;
-            d += 2 * (x - y) + 1;
+            p = p + 2 * x + 1 - 2 * y;
         }
-        plotPoints(a, b, x, y);
+        else
+        {
+            x++;
+            p = p + 2 * x + 1;
+        }
+        //x++;
+         putpixel(x+x1,y+y1,WHITE);
+         cout << x << " \t" << y << endl;
+        putpixel(y+y1,x+x1,WHITE);
+         cout << x << " \t" << y << endl;
+
+         putpixel(x1-x,y1-y,WHITE);
+         cout << x << " \t" << y << endl;
+        putpixel(y1-y,x1-x,WHITE);
+         cout << x << " \t" << y << endl;
+
+         putpixel(x1+x,y1-y,WHITE);
+         cout << x << " \t" << y << endl;
+        putpixel(y1+y,x1-x,WHITE);
+         cout << x << " \t" << y << endl;
+
+         putpixel(x1-x,y1+y,WHITE);
+         cout << x << " \t" << y << endl;
+        putpixel(y1-y,x1+x,WHITE);
+         cout << x << " \t" << y << endl;
+
     }
-}
 
-int main() {
-    int gd = DETECT, gm;
-    int a, b, r;
+     getch();
 
-    initgraph(&gd, &gm, " ");
-
-    cout << "Enter the center of the circle (a, b): ";
-    cin >> a >> b;
-    cout << "Enter the radius of the circle: ";
-    cin >> r;
-
-    setcolor(WHITE);
-    outtextxy(100, 50, "Abdullah Al Zobayer 3035");
-
-    drawCircle(a, b, r);
-
-    getch();
     closegraph();
+
 
     return 0;
 }
