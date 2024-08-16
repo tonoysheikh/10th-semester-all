@@ -5,56 +5,75 @@
 
 using namespace std;
 
+const int THICKNESS = 3;
+const int DELAY_DURATION = 500;
+
+void drawThickLine(int x1, int y1, int x2, int y2, int thickness) {
+    for (int i = 0; i < thickness; i++) {
+        line(x1 + i, y1, x2 + i, y2);
+    }
+}
+
+void drawThickCircle(int x, int y, int radius, int thickness) {
+    for (int i = 0; i < thickness; i++) {
+        circle(x, y, radius + i);
+    }
+}
+
 void Menu() {
     cleardevice();
 
+    setbkcolor(BLACK);
+    setcolor(WHITE);
+
     settextstyle(DEFAULT_FONT, HORIZ_DIR, 2);
 
-    setfillstyle(SOLID_FILL, LIGHTGRAY);
-    bar(100, 100, 600, 400);
+    outtextxy(250,10,"MY MENU");
+    outtextxy(100, 50, "1. See my name.");
+    outtextxy(100, 100, "2. Moving car.");
+    outtextxy(100, 150, "3. Draw a line.");
+    outtextxy(100, 200, "4. Draw a circle.");
+    outtextxy(100, 250, "5. Happy face.");
+    outtextxy(100, 300, "6. Solar System.");
+    outtextxy(100, 350, "7. Exit.");
 
-    outtextxy(150, 100, "1. See my name.");
-    outtextxy(150, 150, "2. MOving car.");
-    outtextxy(150, 200, "3. Draw a line.");
-    outtextxy(150, 250, "4. Draw a circle.");
-    outtextxy(150, 300, "5. Exit");
-
-    rectangle(100, 100, 600, 400);
+    rectangle(50, 40, 600, 400);
 }
 
 void myname()
 {
     cleardevice();
-    outtext("My nickname draw by using line method :");
+    setbkcolor(BLACK);
+    setcolor(WHITE);
+    outtextxy(100, 200, "My nickname draw");
 
+    setlinestyle(SOLID_LINE, 0, THICKNESS);
     setcolor(YELLOW);
 
-    // Alphabet "T"
-    line(75, 30, 75, 100);
-    line(50, 30, 100, 30);
+    drawThickLine(75, 30, 75, 100, THICKNESS);
+    drawThickLine(50, 30, 100, 30, THICKNESS);
 
-    // Alphabet "O"
-    circle(120, 70, 25);
+    drawThickCircle(120, 70, 25, THICKNESS);
 
-    // Alphabet "N"
-    line(160, 30, 160, 100);
-    line(160, 30, 190, 100);
-    line(190, 100, 190, 30);
+    drawThickLine(160, 30, 160, 100, THICKNESS);
+    drawThickLine(160, 30, 190, 100, THICKNESS);
+    drawThickLine(190, 100, 190, 30, THICKNESS);
 
-    // Alphabet "O"
-    circle(230, 70, 25);
 
-    // Alphabet "Y"
-    line(270, 30, 290, 60);
-    line(290, 60, 310, 30);
-    line(290, 60, 290, 100);
+    drawThickCircle(230, 70, 25, THICKNESS);
 
+    drawThickLine(270, 30, 290, 60, THICKNESS);
+    drawThickLine(290, 60, 310, 30, THICKNESS);
+    drawThickLine(290, 60, 290, 100, THICKNESS);
 
     getch();
 }
 void emoji()
 {
     cleardevice();
+    setbkcolor(BLACK);
+    setcolor(WHITE);
+
     setcolor(YELLOW);
 
     outtext("Hi, I am happy face.");
@@ -88,6 +107,8 @@ void emoji()
     floodfill(300, 205, BLACK);
 
     delay(1000);
+
+    getch();
 }
 void DDA_algorithm()
 {
@@ -116,14 +137,13 @@ cleardevice();
     x = round(((double)delx/(double)step));
     y = round(((double)dely/(double)step));
 
-    //int i = 1;
+
     while(x1 <= x2 or y1 <= y2)
     {
         putpixel(x1,y1,GREEN);
 
         x1+= x;
         y1 += y;
-        //i++;
         delay(100);
 
     }
@@ -134,6 +154,8 @@ cleardevice();
 void mid_point_algorithm()
 {
     cleardevice();
+    setbkcolor(BLACK);
+    setcolor(WHITE);
     int x, y, x1, y1, r;
     cin >> x1 >> y1 >> r;
 
@@ -155,7 +177,6 @@ void mid_point_algorithm()
             x++;
             p = p + 2 * x + 1;
         }
-        //x++;
         putpixel(x+x1,y+y1,WHITE);
         cout << x << " \t" << y << endl;
         putpixel(y+y1,x+x1,WHITE);
@@ -184,10 +205,116 @@ void mid_point_algorithm()
 void moving_car()
 {
     cleardevice();
+
+    setbkcolor(BLACK);
+    setcolor(WHITE);
     setbkcolor(4);
+
+
 
     for (int i = 0; i < 500; i++)
     {
+        if(getch())
+        {
+            break;
+        }
+        ellipse(200,30,60,240,10,15);
+
+        ellipse(225,20,345,165,20,15);
+
+        ellipse(262,27,340,160,20,15);
+
+        ellipse(268,42,230,50,20,10);
+
+        ellipse(226,46,163,340,31,15);
+
+        ellipse(300,21,20,182,21,19);
+
+        ellipse(325,31,290,100,21,15);
+
+        ellipse(299,45,228,20,33,11);
+
+
+        ellipse(40,30,60,240,10,15);
+
+        ellipse(65,20,345,165,20,15);
+
+        ellipse(105,27,340,160,20,15);
+
+        ellipse(109,42,230,50,20,10);
+
+        ellipse(66,46,163,340,31,17);
+
+
+
+        ellipse(450,30,60,240,10,15);
+
+        ellipse(475,20,345,165,20,15);
+
+        ellipse(512,27,340,160,20,15);
+
+        ellipse(518,42,230,50,20,10);
+
+        ellipse(476,46,163,340,31,15);
+
+
+        setcolor(WHITE);
+
+        setfillstyle(SOLID_FILL,GREEN);
+
+        line(0,150,100,75);
+
+        line(100,75,200,150);
+
+
+        setcolor(WHITE);
+
+        setfillstyle(SOLID_FILL,GREEN);
+
+        line(175,131,275,75);
+
+        line(275,75,375,150);
+
+
+        setcolor(WHITE);
+
+        setfillstyle(SOLID_FILL,GREEN);
+
+        line(350,131,450,75);
+
+        line(450,75,550,150);
+
+        setcolor(WHITE);
+
+        setfillstyle(SOLID_FILL,GREEN);
+
+        line(525,131,600,75);
+
+        line(600,75,750,180);
+
+
+
+        line(0,150,750,150);
+
+        floodfill(100,136,WHITE);
+
+        floodfill(275,136,WHITE);
+
+        floodfill(450,136,WHITE);
+
+        floodfill(600,136,WHITE);
+
+
+        setcolor(WHITE);
+        setfillstyle(SOLID_FILL, 14);
+        arc(178, 112, 0, 180, 30);
+        floodfill(171, 109, WHITE);
+
+        setfillstyle(SOLID_FILL,BLUE);
+
+        floodfill(50,50,WHITE);
+
+
         setbkcolor(4);
         line(50 + i, 370, 90 + i, 370);
         arc(110 + i, 370, 0, 180, 20);
@@ -312,6 +439,130 @@ void moving_car()
     getch();
 }
 
+void solor()
+{
+    cleardevice();
+
+    setbkcolor(BLACK);
+    setcolor(WHITE);
+    int x, y, i, a = 0, b = 0, c = 0, d = 0, e = 0, f = 0, g = 0, h = 0, j, m = 0;
+    x = getmaxx() / 2;
+    y = getmaxy() / 2;
+
+    while (!kbhit())
+    {
+        setbkcolor(0);
+
+        setcolor(14);
+        circle(x, y, 30);
+        setfillstyle(1, 4);
+        floodfill(x, y, 14);
+
+        i = 60 * cos((0 + a) * 3.14159 / 180);
+        j = 50 * sin((0 + a) * 3.14159 / 180);
+        a += 30;
+        if (a > 360)
+            a = 0;
+        setcolor(8);
+        setfillstyle(1, 8);
+        fillellipse(x + i, y - j, 10, 10);
+        settextstyle(2, 0, 6);
+        outtextxy(x + i, y - j, "mercury");
+
+        ellipse(x, y, 0, 360, 60, 50);
+        i = 90 * cos((90 + b) * 3.14159 / 180);
+        j = 70 * sin((90 + b) * 3.14159 / 180);
+        b += 25;
+        if (b > 360)
+            b = 0;
+        setcolor(14);
+        setfillstyle(1, 14);
+        fillellipse(x + i, y - j, 10, 10);
+        outtextxy(x + i, y - j, "venus");
+        ellipse(x, y, 0, 360, 90, 70);
+
+        i = 120 * cos((180 + c) * 3.14159 / 180);
+        j = 100 * sin((180 + c) * 3.14159 / 180);
+        c += 20;
+        if (c > 360)
+            c = 0;
+        setcolor(1);
+        setfillstyle(1, 1);
+        fillellipse(x + i, y - j, 10, 10);
+        outtextxy(x + i, y - j, "earth");
+        ellipse(x, y, 0, 360, 120, 100);
+
+        i = 150 * cos((60 + d) * 3.14159 / 180);
+        j = 120 * sin((60 + d) * 3.14159 / 180);
+        d += 15;
+        if (d > 360)
+            d = 0;
+        setcolor(4);
+        setfillstyle(1, 4);
+        fillellipse(x + i, y - j, 10, 10);
+        outtextxy(x + i, y - j, "mars");
+        ellipse(x, y, 0, 360, 150, 120);
+
+        i = 180 * cos((0 + e) * 3.14159 / 180);
+        j = 150 * sin((0 + e) * 3.14159 / 180);
+        e += 10;
+        if (e > 360)
+            e = 0;
+        setcolor(12);
+        setfillstyle(1, 12);
+        fillellipse(x + i, y - j, 10, 10);
+        outtextxy(x + i, y - j, "jupiter");
+        ellipse(x, y, 0, 360, 180, 150);
+
+        i = 210 * cos((240 + f) * 3.14159 / 180);
+        j = 170 * sin((240 + f) * 3.14159 / 180);
+        f += 5;
+        if (f > 360)
+            f = 0;
+        setcolor(7);
+        setfillstyle(1, 7);
+        fillellipse(x + i, y - j, 10, 10);
+        outtextxy(x + i, y - j, "saturn");
+        ellipse(x, y, 0, 360, 210, 170);
+
+        i = 240 * cos((90 + g) * 3.14159 / 180);
+        j = 190 * sin((90 + g) * 3.14159 / 180);
+        g += 3;
+        if (g > 360)
+            g = 0;
+        setcolor(9);
+        setfillstyle(1, 9);
+        fillellipse(x + i, y - j, 10, 10);
+        outtextxy(x + i, y - j, "uranus");
+        ellipse(x, y, 0, 360, 240, 190);
+
+        i = 270 * cos((270 + h) * 3.14159 / 180);
+        j = 210 * sin((270 + h) * 3.14159 / 180);
+        h += 2;
+        if (h > 360)
+            h = 0;
+        setcolor(9);
+        setfillstyle(1, 9);
+        fillellipse(x + i, y - j, 10, 10);
+        outtextxy(x + i, y - j, "neptune");
+        ellipse(x, y, 0, 360, 270, 210);
+
+        i = 300 * cos((330 + g) * 3.14159 / 180);
+        j = 230 * sin((330 + g) * 3.14159 / 180);
+        m++;
+        if (m > 360)
+            m = 0;
+        setcolor(6);
+        setfillstyle(1, 6);
+        fillellipse(x + i, y - j, 10, 10);
+        outtextxy(x + i, y - j, "pluto");
+        ellipse(x, y, 0, 360, 300, 230);
+
+        delay(100);
+        cleardevice();
+    }
+}
+
 
 
 int main()
@@ -332,10 +583,7 @@ int main()
         {
         case '1':
             outtextxy(200, 400, "You chose option 1!");
-            delay(1000);
-            cleardevice();
             myname();
-            delay(1000);
             cleardevice();
             //drawMenu();
             break;
@@ -367,6 +615,22 @@ int main()
             cleardevice();
             break;
         case '5':
+            outtextxy(200, 400, "You chose option 5!");
+            delay(1000);
+            cleardevice();
+            emoji();
+            delay(1000);
+            cleardevice();
+            break;
+        case '6':
+            outtextxy(200, 400, "You chose option 6!");
+            delay(1000);
+            cleardevice();
+            solor();
+            delay(1000);
+            cleardevice();
+            break;
+        case '7':
             closegraph();
             exit(0);
             break;
