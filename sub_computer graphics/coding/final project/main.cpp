@@ -34,7 +34,7 @@ void Menu() {
     outtextxy(100, 150, "3. Draw a line.");
     outtextxy(100, 200, "4. Draw a circle.");
     outtextxy(100, 250, "5. Happy face.");
-    outtextxy(100, 300, "6. Solar System.");
+    outtextxy(100, 300, "6. Digital Clock.");
     outtextxy(100, 350, "7. Exit.");
 
     rectangle(50, 40, 600, 400);
@@ -113,10 +113,15 @@ void emoji()
 void DDA_algorithm()
 {
 
-cleardevice();
+    cleardevice();
+    setbkcolor(BLACK);
+    setcolor(WHITE);
 
     int x1, y1,x2,y2;
-    cin >> x1 >> y1>>x2>>y2;
+    cout << "Value of starting X and Y:";
+    cin >> x1 >> y1;
+    cout << "Value of ending X and Y:";
+    cin >> x2>>y2;
 
     int delx = abs(x2-x1);
     int dely = abs(y2-y1);
@@ -147,6 +152,7 @@ cleardevice();
         delay(100);
 
     }
+    cout << "Done"<< endl;
 
     getch();
 }
@@ -157,6 +163,7 @@ void mid_point_algorithm()
     setbkcolor(BLACK);
     setcolor(WHITE);
     int x, y, x1, y1, r;
+    cout << "value of x , y and r :";
     cin >> x1 >> y1 >> r;
 
     x = 0;
@@ -198,6 +205,8 @@ void mid_point_algorithm()
         cout << x << " \t" << y << endl;
 
     }
+
+    cout << "done" << endl;
     getch();
 
 }
@@ -210,14 +219,11 @@ void moving_car()
     setcolor(WHITE);
     setbkcolor(4);
 
+    int i = 0;
 
-
-    for (int i = 0; i < 500; i++)
+    do
     {
-        if(getch())
-        {
-            break;
-        }
+
         ellipse(200,30,60,240,10,15);
 
         ellipse(225,20,345,165,20,15);
@@ -430,8 +436,15 @@ void moving_car()
             floodfill(560,337,15);
         }
 
+        if(i > 500)
+        {
+            getch();
+        }
+        i++;
 
-    }
+
+    }while(!kbhit());
+
     setfillstyle(SOLID_FILL,15);
     rectangle(550,335,580,340);
     floodfill(560,337,15);
@@ -439,127 +452,179 @@ void moving_car()
     getch();
 }
 
-void solor()
+void digital_clock()
 {
     cleardevice();
 
     setbkcolor(BLACK);
     setcolor(WHITE);
-    int x, y, i, a = 0, b = 0, c = 0, d = 0, e = 0, f = 0, g = 0, h = 0, j, m = 0;
-    x = getmaxx() / 2;
-    y = getmaxy() / 2;
 
+    int xmax, ymax, x, y, i = 0, j = 0, k = 0, m = 0, s = 0, h = 0, m1 = 0;
+    float l = 0.0;
+    xmax = getmaxx();
+    ymax = getmaxy();
+    x = xmax / 2;
+    y = ymax / 2;
+    setcolor(15);
+    setbkcolor(0);
+
+    circle(x, y, 179);
+    circle(x, y, 180);
+    setfillstyle(0, 0);
+    floodfill(x, y, 0);
+    settextstyle(1, 0, 4);
+    outtextxy(x - 200, y - 25, "9");
+    outtextxy(x + 186, y - 25, "3");
+    outtextxy(x - 20, y - 220, "12");
+    outtextxy(x - 10, y + 176, "6");
+    outtextxy(x + 90, y - 195, "1");
+    outtextxy(x + 165, y - 120, "2");
+    outtextxy(x + 155, y + 80, "4");
+    outtextxy(x + 86, y + 152, "5");
+    outtextxy(x - 109, y + 148, "7");
+    outtextxy(x - 180, y + 72, "8");
+    outtextxy(x - 195, y - 120, "10");
+    outtextxy(x - 120, y - 195, "11");
+    settextstyle(1, 0, 3);
+    settextstyle(1, 0, 6);
     while (!kbhit())
     {
-        setbkcolor(0);
-
         setcolor(14);
-        circle(x, y, 30);
-        setfillstyle(1, 4);
-        floodfill(x, y, 14);
+        if (m == 60)
+        {
+            if (k <= 90)
+            {
+                setcolor(14);
+                pieslice(x, y, 91 - k, 90 - k, 175);
 
-        i = 60 * cos((0 + a) * 3.14159 / 180);
-        j = 50 * sin((0 + a) * 3.14159 / 180);
-        a += 30;
-        if (a > 360)
-            a = 0;
-        setcolor(8);
-        setfillstyle(1, 8);
-        fillellipse(x + i, y - j, 10, 10);
-        settextstyle(2, 0, 6);
-        outtextxy(x + i, y - j, "mercury");
+                delay(10);
+                setcolor(0);
+                pieslice(x, y, 97 - k, 96 - k, 175);
+            }
+            if (k > 90)
+            {
+                setcolor(14);
+                pieslice(x, y, 451 - k, 450 - k, 175);
 
-        ellipse(x, y, 0, 360, 60, 50);
-        i = 90 * cos((90 + b) * 3.14159 / 180);
-        j = 70 * sin((90 + b) * 3.14159 / 180);
-        b += 25;
-        if (b > 360)
-            b = 0;
-        setcolor(14);
-        setfillstyle(1, 14);
-        fillellipse(x + i, y - j, 10, 10);
-        outtextxy(x + i, y - j, "venus");
-        ellipse(x, y, 0, 360, 90, 70);
+                delay(10);
 
-        i = 120 * cos((180 + c) * 3.14159 / 180);
-        j = 100 * sin((180 + c) * 3.14159 / 180);
-        c += 20;
-        if (c > 360)
-            c = 0;
-        setcolor(1);
-        setfillstyle(1, 1);
-        fillellipse(x + i, y - j, 10, 10);
-        outtextxy(x + i, y - j, "earth");
-        ellipse(x, y, 0, 360, 120, 100);
-
-        i = 150 * cos((60 + d) * 3.14159 / 180);
-        j = 120 * sin((60 + d) * 3.14159 / 180);
-        d += 15;
-        if (d > 360)
-            d = 0;
+                setcolor(0);
+                pieslice(x, y, 457 - k, 456 - k, 175);
+            }
+            if (k == 360)
+                k = 0;
+            k = k + 6;
+        }
+        else
+        {
+            if (k <= 90)
+            {
+                pieslice(x, y, 91 - k, 90 - k, 175);
+                setcolor(0);
+                pieslice(x, y, 97 - k, 96 - k, 175);
+            }
+            if (k > 90)
+            {
+                setcolor(14);
+                pieslice(x, y, 451 - k, 450 - k, 175);
+                setcolor(0);
+                pieslice(x, y, 457 - k, 456 - k, 175);
+            }
+        }
         setcolor(4);
-        setfillstyle(1, 4);
-        fillellipse(x + i, y - j, 10, 10);
-        outtextxy(x + i, y - j, "mars");
-        ellipse(x, y, 0, 360, 150, 120);
+        if (j == 60 * 5)
+        {
+            if (l <= 90)
+            {
+                setcolor(4);
+                pieslice(x, y, 91 - l, 90 - l, 175);
 
-        i = 180 * cos((0 + e) * 3.14159 / 180);
-        j = 150 * sin((0 + e) * 3.14159 / 180);
-        e += 10;
-        if (e > 360)
-            e = 0;
-        setcolor(12);
-        setfillstyle(1, 12);
-        fillellipse(x + i, y - j, 10, 10);
-        outtextxy(x + i, y - j, "jupiter");
-        ellipse(x, y, 0, 360, 180, 150);
+                delay(20);
 
-        i = 210 * cos((240 + f) * 3.14159 / 180);
-        j = 170 * sin((240 + f) * 3.14159 / 180);
-        f += 5;
-        if (f > 360)
-            f = 0;
-        setcolor(7);
-        setfillstyle(1, 7);
-        fillellipse(x + i, y - j, 10, 10);
-        outtextxy(x + i, y - j, "saturn");
-        ellipse(x, y, 0, 360, 210, 170);
+                setcolor(0);
+                pieslice(x, y, 93.5 - l, 92.5 - l, 175);
+            }
+            if (l > 90)
+            {
+                setcolor(4);
+                pieslice(x, y, 451 - l, 450 - l, 175);
 
-        i = 240 * cos((90 + g) * 3.14159 / 180);
-        j = 190 * sin((90 + g) * 3.14159 / 180);
-        g += 3;
-        if (g > 360)
-            g = 0;
-        setcolor(9);
-        setfillstyle(1, 9);
-        fillellipse(x + i, y - j, 10, 10);
-        outtextxy(x + i, y - j, "uranus");
-        ellipse(x, y, 0, 360, 240, 190);
+                delay(20);
 
-        i = 270 * cos((270 + h) * 3.14159 / 180);
-        j = 210 * sin((270 + h) * 3.14159 / 180);
-        h += 2;
-        if (h > 360)
-            h = 0;
-        setcolor(9);
-        setfillstyle(1, 9);
-        fillellipse(x + i, y - j, 10, 10);
-        outtextxy(x + i, y - j, "neptune");
-        ellipse(x, y, 0, 360, 270, 210);
+                setcolor(0);
+                pieslice(x, y, 453.5 - l, 452.5 - l, 175);
+            }
+            if (l == 360)
+                l = 0;
+            l = l + 2.5;
+        }
+        else
+        {
+            if (l <= 90)
+            {
+                setcolor(4);
+                pieslice(x, y, 91 - l, 90 - l, 175);
+                setcolor(0);
+                pieslice(x, y, 93.5 - l, 92.5 - l, 175);
+            }
+            if (l > 90)
+            {
+                setcolor(4);
+                pieslice(x, y, 451 - l, 450 - l, 175);
+                setcolor(0);
+                pieslice(x, y, 453.5 - l, 452.5 - l, 175);
+            }
+        }
+        if (i <= 90)
+        {
+            setcolor(10);
+            pieslice(x, y, 91 - i, 90 - i, 175);
+            delay(1000);
 
-        i = 300 * cos((330 + g) * 3.14159 / 180);
-        j = 230 * sin((330 + g) * 3.14159 / 180);
-        m++;
-        if (m > 360)
+            delay(5);
+
+            setcolor(0);
+            pieslice(x, y, 91 - i, 90 - i, 175);
+        }
+        if (i > 90)
+        {
+            setcolor(10);
+            pieslice(x, y, 451 - i, 450 - i, 175);
+            delay(1000);
+
+            delay(5);
+
+            setcolor(0);
+            pieslice(x, y, 451 - i, 450 - i, 175);
+        }
+        if (i == 360)
+            i = 0;
+        i = i + 6;
+        s = i / 6;
+        if (j == 60 * 5)
+            j = 0;
+        j++;
+        if (m == 60)
             m = 0;
-        setcolor(6);
-        setfillstyle(1, 6);
-        fillellipse(x + i, y - j, 10, 10);
-        outtextxy(x + i, y - j, "pluto");
-        ellipse(x, y, 0, 360, 300, 230);
+        m++;
+        if (s == 60)
+        {
+            m1++;
+            s = 0;
+        }
+        if (h == 24)
+            h = 0;
+        if (m1 == 60)
+        {
+            h++;
+            m1 = 0;
+        }
 
-        delay(100);
-        cleardevice();
+        printf("%02d :", h);
+        printf("%02d :", m1);
+        printf("%02d", s);
+        cout << endl;
+        s++;
     }
 }
 
@@ -585,26 +650,16 @@ int main()
             outtextxy(200, 400, "You chose option 1!");
             myname();
             cleardevice();
-            //drawMenu();
             break;
         case '2':
             outtextxy(200, 400, "You chose option 2!");
-            delay(1000);
-            cleardevice();
-            //rectangle();
             moving_car();
-            delay(1000);
             cleardevice();
-            //drawMenu();
             break;
         case '3':
             outtextxy(200, 400, "You chose option 3!");
-            delay(1000);
-            cleardevice();
             DDA_algorithm();
-            delay(1000);
             cleardevice();
-            //drawMenu();
             break;
         case '4':
             outtextxy(200, 400, "You chose option 4!");
@@ -626,7 +681,7 @@ int main()
             outtextxy(200, 400, "You chose option 6!");
             delay(1000);
             cleardevice();
-            solor();
+            digital_clock();
             delay(1000);
             cleardevice();
             break;
